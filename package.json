@@ -1,0 +1,30 @@
+{
+  "name": "opencode-makefile-deploy-guard",
+  "version": "1.0.0",
+  "description": "An OpenCode plugin that blocks direct deployment commands (like wrangler deploy, bun run deploy) and forces the use of Makefiles to ensure environment variables and preflight checks are run.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "opencode",
+    "plugin",
+    "ai",
+    "deploy",
+    "guardrails",
+    "makefile"
+  ],
+  "author": "sirmews",
+  "license": "MIT",
+  "dependencies": {
+    "@opencode-ai/plugin": "latest"
+  },
+  "devDependencies": {
+    "@types/node": "^25.3.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}
