@@ -16,6 +16,12 @@ wrangler deploy
 
 However, this bypasses essential environment setups and safety checks. This plugin intercepts the `bash` or `shell` tool execution *before* it runs, logs the attempt, and returns a hard error instructing the agent to use `make deploy` instead.
 
+### Why Makefiles?
+Makefiles are an excellent, universal way to encapsulate complex tasks like deployments into simple commands. They allow you to:
+1. **Chain Prerequisites**: A `deploy` target can automatically run `build` and `test` targets first. If a prerequisite fails, the deploy stops safely.
+2. **Inject Environment Variables**: You can source `.env` files or execute pre-flight checker scripts (e.g., ensuring `CLOUDFLARE_API_TOKEN` exists) before the underlying deploy command even runs.
+3. **Provide a Standard Interface**: An agent doesn't need to guess if your app uses `bun run build:worker` or `npm run deploy:frontend`—it just learns `make deploy`.
+
 ### Why Markdown (AGENTS.md)?
 While this plugin acts as a "hard" guardrail that strictly blocks bad commands, it is best paired with a "soft" guardrail: documentation. 
 
